@@ -48,12 +48,13 @@ head(data_LPD)
 #   datasets: The input dataframe
 #   k: Number of folds for cross-validation (default: 10)
 #   S: Number of MCMC sampling iterations (default: 200)
+#   grid: Number of grid points for KDE (default: 25)
+#   seed: Random seed for reproducibility (default: 123)
 #   calculate_auc: Whether to compute AUC (default: FALSE)
 
 results_sim <- run_P4MC(
   datasets = data_simulation,
   k = 10,             # Using 5-fold CV for this example
-  S = 200,            # MCMC iterations
   csv_path = "P4MC_results_sim.csv",
   calculate_auc = TRUE
 )
@@ -61,14 +62,15 @@ results_sim <- run_P4MC(
 results_LPD <- run_P4MC(
   datasets = data_LPD,
   k = 5,              # Using 5-fold CV for this example
-  S = 200,            # MCMC iterations
   csv_path = "P4MC_results_LPD.csv",
   calculate_auc = TRUE
 )
 
 # 3. View the final summary (Mean ± SD)
-print(results$final_table)
+print(results_sim$final_table)
+print(results_LPD$final_table)
 
 # 4. Access detailed confusion matrices for each fold
-# print(results$confusion_tables)
+# print(results_sim$confusion_tables)
+# print(results_LPD$confusion_tables)
 ```
