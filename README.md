@@ -3,7 +3,7 @@
   <img src="framework/framework.png" width="90%" alt="P4MC Framework Flowchart">
 </div>
 
-> **Figure 1: The Framework of P4MC.**
+> **The Framework of P4MC.**
 >
 > **(a) Clinical Background:** The study utilizes three data sources: preoperative indicators, intraoperative indicators generated during surgery, and postoperative complication outcomes.
 >
