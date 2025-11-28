@@ -1,4 +1,3 @@
-Markdown
 
 <div align="center">
   <img src="framework/framework.png" width="90%" alt="P4MC Framework Flowchart">
