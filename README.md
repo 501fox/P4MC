@@ -57,6 +57,7 @@ head(data_LPD)
 results_sim <- run_P4MC(
   datasets = data_simulation,
   k = 10,             # Using 10-fold CV 
+  s = 123,            # set seed
   csv_path = "P4MC_results_sim.csv",
   calculate_auc = TRUE
 )
@@ -64,6 +65,7 @@ results_sim <- run_P4MC(
 results_LPD <- run_P4MC(
   datasets = data_LPD,
   k = 5,              # Using 5-fold CV 
+  s = 123455,         # set seed
   csv_path = "P4MC_results_LPD.csv",
   calculate_auc = TRUE
 )
