@@ -39,42 +39,40 @@ devtools::install_github("501fox/P4MC")
 ```
 
 ## Usage
-Here is how to load the data and run the prediction model:
+Here is a standard pipeline to load the data and run the P4MC prediction models:
 
 ```r
-
 library(P4MC)
 
 # 1. Load the example datasets
 data("data_simulation")
 data("data_LPD")
 
-# Check the data structure
-head(data_simulation)
-head(data_LPD)
-
-# 2. Run the P4MC evaluation
-results_sim <- run_P4MC(
+# 2. Single Run Evaluation
+# For Simulation Data:
+results_sim <- run_P4MC_multi_sim(
   datasets = data_simulation,
-  k = 10,             # Using 10-fold CV 
-  s = 123,            # set seed
-  csv_path = "P4MC_results_sim.csv",
-  calculate_auc = TRUE
+  k = 10,             
+  seed = 123,         
+  calculate_auc = TRUE,
+  classifiers = c('logistic', 'svm', 'rf', 'xgboost') 
 )
 
-results_LPD <- run_P4MC(
+# For LPD Real Data (includes internal SMOTE processing):
+results_LPD <- run_P4MC_multi_LPD(
   datasets = data_LPD,
-  k = 5,              # Using 5-fold CV 
-  s = 123455,         # set seed
-  csv_path = "P4MC_results_LPD.csv",
-  calculate_auc = TRUE
+  k = 5,              
+  seed = 123455,      
+  calculate_auc = TRUE,
+  classifiers = c('logistic', 'svm', 'rf', 'xgboost')
 )
 
-# 3. View the final summary (Mean ± SD)
-print(results_sim$final_table)
-print(results_LPD$final_table)
+# 3. View Results
+print(results_sim$SummaryTable)
+print(results_LPD$SummaryTable)
 
-# 4. Access detailed confusion matrices for each fold
-# print(results_sim$confusion_tables)
-# print(results_LPD$confusion_tables)
-```
+# Optional: If you want to run multiple replications (e.g., to compute CI), 
+# you can easily wrap the function in a simple loop:
+# results_list <- lapply(1:5, function(s) {
+#   run_P4MC_multi_LPD(datasets = data_LPD, k = 5, seed = s, calculate_auc = TRUE)
+# })
