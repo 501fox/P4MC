@@ -52,8 +52,7 @@ data("data_LPD")
 # For Simulation Data:
 results_sim <- run_P4MC_multi_sim(
   datasets = data_simulation,
-  k = 10,             
-  seed = 123,         
+  k = 10,                    
   calculate_auc = TRUE,
   classifiers = c('logistic', 'svm', 'rf', 'xgboost') 
 )
@@ -62,7 +61,6 @@ results_sim <- run_P4MC_multi_sim(
 results_LPD <- run_P4MC_multi_LPD(
   datasets = data_LPD,
   k = 5,              
-  seed = 123455,      
   calculate_auc = TRUE,
   classifiers = c('logistic', 'svm', 'rf', 'xgboost')
 )
