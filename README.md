@@ -11,7 +11,7 @@
 > * **Step 1: Dimension Reduction.** Perform Partial Sufficient Dimension Reduction (PSDR) to compress the high-dimensional *X₂* into a scalar sufficient predictor *R(X₂)*.
 > * **Step 2: Density Estimation.** Estimate the joint distribution of *X₁* and *R(X₂)* using Kernel Density Estimation (KDE) on a multidimensional grid.
 > * **Step 3: Distribution Modeling and Sampling.** For a new patient with unobserved intraoperative data, fit the conditional distribution using B-spline interpolation and generate latent Monte Carlo samples via the Metropolis-Hastings (MH) algorithm.
-> * **Step 4: Risk Prediction.** Apply the trained logistic regression model to the generated samples to calculate the probability of complications, enabling the final binary classification.
+> * **Step 4: Risk Prediction.** Apply the trained classifiers to the generated samples to calculate the probability of complications, enabling the final binary classification.
 
 <br>
 
